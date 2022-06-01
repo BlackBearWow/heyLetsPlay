@@ -2,7 +2,7 @@ package hotel;
 
 import java.util.Vector;
 
-//Å×½ºÆ®¿ë ÀÚ¹Ù ÆÄÀÏ
+//í…ŒìŠ¤íŠ¸
 public class Test
 {
 	public static void main(String[] args)

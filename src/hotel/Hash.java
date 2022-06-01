@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class Hash
 {
-	//md5¹æ½Ä ÇØ½Ã
+	//md5ë°©ì‹
 	public static String MD5(String pwd) {
 	    String MD5 = "";
 	    try {
@@ -24,7 +24,7 @@ public class Hash
 	    return MD5;
 	}
 	
-	//sha256¹æ½Ä ÇØ½Ã
+	//sha256ë°©ì‹
 	public static String SHA256(String pwd) {
 		try{
 
@@ -37,7 +37,7 @@ public class Hash
 				if(hex.length() == 1) hexString.append('0');
 				hexString.append(hex);
 			}
-			//Ãâ·Â
+			//ï¿½ï¿½ï¿½
 			return hexString.toString();
 		} catch(Exception ex){
 			throw new RuntimeException(ex);

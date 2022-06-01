@@ -51,7 +51,7 @@ public class HotelSystemInitialization
 		
 		"drop table if exists reservation;",
 		"create table reservation("+
-		   "reservation_num int NOT NULL AUTO_INCREMENT,"+	//°ªÀÌ ÀÚµ¿ Áõ°¡ÇÔ
+		   "reservation_num int NOT NULL AUTO_INCREMENT,"+	//ìë™ìœ¼ë¡œ ê°’ì´ ì¦ê°€í•¨
 		   "hotel_name varchar(40) NOT NULL,"+
 		   "room_num int NOT NULL,"+
 		   "c_id varchar(40) NOT NULL,"+
@@ -65,7 +65,7 @@ public class HotelSystemInitialization
 		
 		"drop table if exists reservation_cancellation;",
 		"create table reservation_cancellation("+
-		   "reservation_cancellation_num int NOT NULL AUTO_INCREMENT,"+	//°ªÀÌ ÀÚµ¿ Áõ°¡ÇÔ
+		   "reservation_cancellation_num int NOT NULL AUTO_INCREMENT,"+	//ìë™ìœ¼ë¡œ ê°’ì´ ì¦ê°€í•¨
 		   "cancellation_charge int NOT NULL,"+
 		   "cancellation_date date NOT NULL,"+
 		   "hotel_name varchar(40) NOT NULL,"+
@@ -80,64 +80,64 @@ public class HotelSystemInitialization
 		") DEFAULT CHARACTER SET UTF8;"
 	};
 	static String[] insertDefaultDataSqls= {
-			"insert into customer values('guest1', '" + Hash.SHA256("passwd6") + "', '³ª¼ö¿µ', '010-1111-1111', 'nsy1111@gmail.com');",
-			"insert into customer values('guest2', '" + Hash.SHA256("passwd7") + "', 'ÀÌ¸ğ¶ó', '010-1234-1171', 'emr1111@gmail.com');",
-			"insert into customer values('guest3', '" + Hash.SHA256("passwd8") + "', 'ÃÖ¿µÀç', '010-5678-1311', 'cyj1111@gmail.com');",
-			"insert into customer values('guest4', '" + Hash.SHA256("passwd9") + "', 'Àü»õ·Ò', '010-3344-1181', 'jsr1111@gmail.com');",
-			"insert into customer values('guest5', '" + Hash.SHA256("passwd10") + "', '³ª¹Ì¸®', '010-1566-1112', 'mmr1111@gmail.com');",
+			"insert into customer values('guest1', '" + Hash.SHA256("passwd6") + "', 'ë‚˜ìˆ˜ì˜', '010-1111-1111', 'nsy1111@gmail.com');",
+			"insert into customer values('guest2', '" + Hash.SHA256("passwd7") + "', 'ì´ëª¨ë¼', '010-1234-1171', 'emr1111@gmail.com');",
+			"insert into customer values('guest3', '" + Hash.SHA256("passwd8") + "', 'ìµœì˜ì¬', '010-5678-1311', 'cyj1111@gmail.com');",
+			"insert into customer values('guest4', '" + Hash.SHA256("passwd9") + "', 'ì „ìƒˆë¡¬', '010-3344-1181', 'jsr1111@gmail.com');",
+			"insert into customer values('guest5', '" + Hash.SHA256("passwd10") + "', 'ë‚˜ë¯¸ë¦¬', '010-1566-1112', 'mmr1111@gmail.com');",
 			
-			"insert into hotel_owner values('owner1', '" + Hash.SHA256("passwd1") + "', 'È«±æµ¿', '010-1111-1111', '123456-1234567');",
-			"insert into hotel_owner values('owner2', '" + Hash.SHA256("passwd2") + "', 'ÃÖÁÖÈ£', '010-1111-1111', '123456-1234567');",
-			"insert into hotel_owner values('owner3', '" + Hash.SHA256("passwd3") + "', 'Â÷½ÂÀ±', '010-1111-1111', '123456-1234567');",
-			"insert into hotel_owner values('owner4', '" + Hash.SHA256("passwd4") + "', 'ÀüÀºÀç', '010-1111-1111', '123456-1234567');",
-			"insert into hotel_owner values('owner5', '" + Hash.SHA256("passwd5") + "', 'ÃÖÁØÇõ', '010-1111-1111', '123456-1234567');",
+			"insert into hotel_owner values('owner1', '" + Hash.SHA256("passwd1") + "', 'í™ê¸¸ë™', '010-1111-1111', '123456-1234567');",
+			"insert into hotel_owner values('owner2', '" + Hash.SHA256("passwd2") + "', 'ìµœì£¼í˜¸', '010-1111-1111', '123456-1234567');",
+			"insert into hotel_owner values('owner3', '" + Hash.SHA256("passwd3") + "', 'ì°¨ìŠ¹ìœ¤', '010-1111-1111', '123456-1234567');",
+			"insert into hotel_owner values('owner4', '" + Hash.SHA256("passwd4") + "', 'ì „ì€ì¬', '010-1111-1111', '123456-1234567');",
+			"insert into hotel_owner values('owner5', '" + Hash.SHA256("passwd5") + "', 'ìµœì¤€í˜', '010-1111-1111', '123456-1234567');",
 			
-			"insert into hotel values('¶ó¹ß½º È£ÅÚ ºÎ»ê', 'ºÎ»ê±¤¿ª½Ã ¿µµµ±¸ ºÀ·¡³ª·ç·Î 82', '010-1111-1111', 5, 'owner1', '2015-10-29');",
-			"insert into hotel values('ÈúÆ° °¡µçÀÎ ¼­¿ï °­³²', '¼­¿ïÆ¯º°½Ã ¼­ÃÊ±¸ °­³²´ë·Î 253', '010-1111-1111', 5, 'owner2', '2015-11-09');",
-			"insert into hotel values('¼ÓÃÊ ÄÁÇÇ³×½º ºñÄ¡ È£ÅÚ', '°­¿øµµ ¼ÓÃÊ½Ã ÇØ¿À¸§·Î 171', '010-1111-1111', 5, 'owner3', '2016-03-20');",
-			"insert into hotel values('½Å¶ó½ºÅ×ÀÌ »ï¼º', '¼­¿ïÆ¯º°½Ã °­³²±¸ ¿µµ¿´ë·Î 506', '010-1111-1111', 5, 'owner4', '2016-05-11');",
-			"insert into hotel values('È£ÅÚ ¾Æ¸£¶¼', '°æ±âµµ ¼ö¿ø½Ã ÆÈ´Ş±¸ ÀÎ°è·Î108¹ø±æ 37', '010-1111-1111', 5, 'owner5', '2016-12-25');",
+			"insert into hotel values('ë¼ë°œìŠ¤ í˜¸í…” ë¶€ì‚°', 'ë¶€ì‚°ê´‘ì—­ì‹œ ì˜ë„êµ¬ ë´‰ë˜ë‚˜ë£¨ë¡œ 82', '010-1111-1111', 5, 'owner1', '2015-10-29');",
+			"insert into hotel values('ì†ì´ˆ ì»¨í”¼ë„¤ìŠ¤ ë¹„ì¹˜ í˜¸í…”', 'ê°•ì›ë„ ì†ì´ˆì‹œ í•´ì˜¤ë¦„ë¡œ 171', '010-1111-1111', 5, 'owner2', '2015-11-09');",
+			"insert into hotel values('ì‹ ë¼ìŠ¤í…Œì´ ì‚¼ì„±', 'ì„œìš¸íŠ¹ë³„ì‹œ ê°•ë‚¨êµ¬ ì˜ë™ëŒ€ë¡œ 506', '010-1111-1111', 5, 'owner3', '2016-03-20');",
+			"insert into hotel values('í˜¸í…” ì•„ë¥´ë–¼', 'ê²½ê¸°ë„ ìˆ˜ì›ì‹œ íŒ”ë‹¬êµ¬ ì¸ê³„ë¡œ108ë²ˆê¸¸ 37', '010-1111-1111', 5, 'owner4', '2016-05-11');",
+			"insert into hotel values('ííŠ¼ ê°€ë“ ì¸ ì„œìš¸ ê°•ë‚¨', 'ì„œìš¸íŠ¹ë³„ì‹œ ì„œì´ˆêµ¬ ê°•ë‚¨ëŒ€ë¡œ 253', '010-1111-1111', 5, 'owner5', '2016-12-25');",
 			
-			"insert into room values('¶ó¹ß½º È£ÅÚ ºÎ»ê', 101, '2015-10-29', 2, 80000, 18);",
-			"insert into room values('¶ó¹ß½º È£ÅÚ ºÎ»ê', 102, '2015-10-29', 2, 80000, 18);",
-			"insert into room values('¶ó¹ß½º È£ÅÚ ºÎ»ê', 201, '2015-10-29', 2, 80000, 18);",
-			"insert into room values('¶ó¹ß½º È£ÅÚ ºÎ»ê', 202, '2015-10-29', 2, 80000, 18);",
-			"insert into room values('¶ó¹ß½º È£ÅÚ ºÎ»ê', 301, '2015-10-29', 2, 80000, 18);",
-			"insert into room values('¶ó¹ß½º È£ÅÚ ºÎ»ê', 302, '2015-10-29', 2, 80000, 18);",
-			"insert into room values('ÈúÆ° °¡µçÀÎ ¼­¿ï °­³²', 101, '2015-11-09', 2, 120000, 22);",
-			"insert into room values('ÈúÆ° °¡µçÀÎ ¼­¿ï °­³²', 102, '2015-11-09', 2, 120000, 22);",
-			"insert into room values('ÈúÆ° °¡µçÀÎ ¼­¿ï °­³²', 103, '2015-11-09', 2, 120000, 22);",
-			"insert into room values('¼ÓÃÊ ÄÁÇÇ³×½º ºñÄ¡ È£ÅÚ', 101, '2016-03-20', 3, 100000, 18);",
-			"insert into room values('¼ÓÃÊ ÄÁÇÇ³×½º ºñÄ¡ È£ÅÚ', 102, '2016-03-20', 3, 100000, 18);",
-			"insert into room values('½Å¶ó½ºÅ×ÀÌ »ï¼º', 101, '2016-05-11', 2, 100000, 16);",
-			"insert into room values('½Å¶ó½ºÅ×ÀÌ »ï¼º', 102, '2016-05-11', 2, 100000, 16);",
-			"insert into room values('½Å¶ó½ºÅ×ÀÌ »ï¼º', 201, '2016-05-11', 2, 100000, 16);",
-			"insert into room values('½Å¶ó½ºÅ×ÀÌ »ï¼º', 202, '2016-05-11', 2, 100000, 16);",
-			"insert into room values('È£ÅÚ ¾Æ¸£¶¼', 101, '2016-12-25', 2, 90000, 20);",
-			"insert into room values('È£ÅÚ ¾Æ¸£¶¼', 102, '2016-12-25', 2, 90000, 20);",
-			"insert into room values('È£ÅÚ ¾Æ¸£¶¼', 103, '2016-12-25', 2, 90000, 20);",
+			"insert into room values('ë¼ë°œìŠ¤ í˜¸í…” ë¶€ì‚°', 101, '2015-10-29', 2, 80000, 18);",
+			"insert into room values('ë¼ë°œìŠ¤ í˜¸í…” ë¶€ì‚°', 102, '2015-10-29', 2, 80000, 18);",
+			"insert into room values('ë¼ë°œìŠ¤ í˜¸í…” ë¶€ì‚°', 201, '2015-10-29', 2, 80000, 18);",
+			"insert into room values('ë¼ë°œìŠ¤ í˜¸í…” ë¶€ì‚°', 202, '2015-10-29', 2, 80000, 18);",
+			"insert into room values('ë¼ë°œìŠ¤ í˜¸í…” ë¶€ì‚°', 301, '2015-10-29', 2, 80000, 18);",
+			"insert into room values('ë¼ë°œìŠ¤ í˜¸í…” ë¶€ì‚°', 302, '2015-10-29', 2, 80000, 18);",
+			"insert into room values('ì†ì´ˆ ì»¨í”¼ë„¤ìŠ¤ ë¹„ì¹˜ í˜¸í…”', 101, '2015-11-09', 2, 120000, 22);",
+			"insert into room values('ì†ì´ˆ ì»¨í”¼ë„¤ìŠ¤ ë¹„ì¹˜ í˜¸í…”', 102, '2015-11-09', 2, 120000, 22);",
+			"insert into room values('ì†ì´ˆ ì»¨í”¼ë„¤ìŠ¤ ë¹„ì¹˜ í˜¸í…”', 103, '2015-11-09', 2, 120000, 22);",
+			"insert into room values('ì‹ ë¼ìŠ¤í…Œì´ ì‚¼ì„±', 101, '2016-03-20', 3, 100000, 18);",
+			"insert into room values('ì‹ ë¼ìŠ¤í…Œì´ ì‚¼ì„±', 102, '2016-03-20', 3, 100000, 18);",
+			"insert into room values('í˜¸í…” ì•„ë¥´ë–¼', 101, '2016-05-11', 2, 100000, 16);",
+			"insert into room values('í˜¸í…” ì•„ë¥´ë–¼', 102, '2016-05-11', 2, 100000, 16);",
+			"insert into room values('í˜¸í…” ì•„ë¥´ë–¼', 201, '2016-05-11', 2, 100000, 16);",
+			"insert into room values('í˜¸í…” ì•„ë¥´ë–¼', 202, '2016-05-11', 2, 100000, 16);",
+			"insert into room values('ííŠ¼ ê°€ë“ ì¸ ì„œìš¸ ê°•ë‚¨', 101, '2016-12-25', 2, 90000, 20);",
+			"insert into room values('ííŠ¼ ê°€ë“ ì¸ ì„œìš¸ ê°•ë‚¨', 102, '2016-12-25', 2, 90000, 20);",
+			"insert into room values('ííŠ¼ ê°€ë“ ì¸ ì„œìš¸ ê°•ë‚¨', 103, '2016-12-25', 2, 90000, 20);",
 			
-			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('¶ó¹ß½º È£ÅÚ ºÎ»ê', 101, 'guest1', '2022-03-01', '2022-07-22', '2022-07-23', '½Å¿ëÄ«µå', 4);",
-			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('¶ó¹ß½º È£ÅÚ ºÎ»ê', 101, 'guest2', '2022-03-01', '2022-07-02', '2022-07-03', '½Å¿ëÄ«µå', 4);",
-			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('ÈúÆ° °¡µçÀÎ ¼­¿ï °­³²', 101, 'guest2', '2022-03-01', '2022-07-22', '2022-07-23', '½Å¿ëÄ«µå', 4);",
-			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('ÈúÆ° °¡µçÀÎ ¼­¿ï °­³²', 101, 'guest3', '2022-03-01', '2022-07-02', '2022-07-03', '½Å¿ëÄ«µå', 4);",
-			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('¼ÓÃÊ ÄÁÇÇ³×½º ºñÄ¡ È£ÅÚ', 101, 'guest3', '2022-03-01', '2022-07-22', '2022-07-23', '½Å¿ëÄ«µå', 4);",
-			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('¼ÓÃÊ ÄÁÇÇ³×½º ºñÄ¡ È£ÅÚ', 101, 'guest4', '2022-03-01', '2022-07-02', '2022-07-03', '½Å¿ëÄ«µå', 4);",
-			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('½Å¶ó½ºÅ×ÀÌ »ï¼º', 101, 'guest4', '2022-03-01', '2022-07-22', '2022-07-23', '½Å¿ëÄ«µå', 4);",
-			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('½Å¶ó½ºÅ×ÀÌ »ï¼º', 101, 'guest5', '2022-03-01', '2022-07-02', '2022-07-03', '½Å¿ëÄ«µå', 4);",
-			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('È£ÅÚ ¾Æ¸£¶¼', 101, 'guest5', '2022-03-01', '2022-07-22', '2022-07-23', '½Å¿ëÄ«µå', 4);",
-			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('È£ÅÚ ¾Æ¸£¶¼', 101, 'guest1', '2022-03-01', '2022-07-02', '2022-07-03', '½Å¿ëÄ«µå', 4);",
+			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('ë¼ë°œìŠ¤ í˜¸í…” ë¶€ì‚°', 101, 'guest1', '2022-03-01', '2022-07-22', '2022-07-23', 'ì‹ ìš©ì¹´ë“œ', 4);",
+			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('ë¼ë°œìŠ¤ í˜¸í…” ë¶€ì‚°', 101, 'guest2', '2022-03-01', '2022-07-02', '2022-07-03', 'ì‹ ìš©ì¹´ë“œ', 4);",
+			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('ì†ì´ˆ ì»¨í”¼ë„¤ìŠ¤ ë¹„ì¹˜ í˜¸í…”', 101, 'guest2', '2022-03-01', '2022-07-22', '2022-07-23', 'ì‹ ìš©ì¹´ë“œ', 4);",
+			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('ì†ì´ˆ ì»¨í”¼ë„¤ìŠ¤ ë¹„ì¹˜ í˜¸í…”', 101, 'guest3', '2022-03-01', '2022-07-02', '2022-07-03', 'ì‹ ìš©ì¹´ë“œ', 4);",
+			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('ì‹ ë¼ìŠ¤í…Œì´ ì‚¼ì„±', 101, 'guest3', '2022-03-01', '2022-07-22', '2022-07-23', 'ì‹ ìš©ì¹´ë“œ', 4);",
+			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('ì‹ ë¼ìŠ¤í…Œì´ ì‚¼ì„±', 101, 'guest4', '2022-03-01', '2022-07-02', '2022-07-03', 'ì‹ ìš©ì¹´ë“œ', 4);",
+			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('í˜¸í…” ì•„ë¥´ë–¼', 101, 'guest4', '2022-03-01', '2022-07-22', '2022-07-23', 'ì‹ ìš©ì¹´ë“œ', 4);",
+			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('í˜¸í…” ì•„ë¥´ë–¼', 101, 'guest5', '2022-03-01', '2022-07-02', '2022-07-03', 'ì‹ ìš©ì¹´ë“œ', 4);",
+			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('ííŠ¼ ê°€ë“ ì¸ ì„œìš¸ ê°•ë‚¨', 101, 'guest5', '2022-03-01', '2022-07-22', '2022-07-23', 'ì‹ ìš©ì¹´ë“œ', 4);",
+			"insert into reservation(hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date, payment_type, number_of_people) values('ííŠ¼ ê°€ë“ ì¸ ì„œìš¸ ê°•ë‚¨', 101, 'guest1', '2022-03-01', '2022-07-02', '2022-07-03', 'ì‹ ìš©ì¹´ë“œ', 4);",
 			
-			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(20000, '2022-03-04', '¶ó¹ß½º È£ÅÚ ºÎ»ê', 101, 'guest1', '2022-03-01', '2022-03-22', '2022-03-23', '½Å¿ëÄ«µå', 3);",
-			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(20000, '2022-03-04', '¶ó¹ß½º È£ÅÚ ºÎ»ê', 101, 'guest2', '2022-03-01', '2022-03-22', '2022-03-23', '½Å¿ëÄ«µå', 3);",
-			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(25000, '2022-04-04', 'ÈúÆ° °¡µçÀÎ ¼­¿ï °­³²', 101, 'guest2', '2022-04-01', '2022-04-22', '2022-04-23', '½Å¿ëÄ«µå', 3);",
-			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(25000, '2022-04-04', 'ÈúÆ° °¡µçÀÎ ¼­¿ï °­³²', 101, 'guest3', '2022-04-01', '2022-04-22', '2022-04-23', '½Å¿ëÄ«µå', 3);",
-			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(25000, '2022-04-04', '¼ÓÃÊ ÄÁÇÇ³×½º ºñÄ¡ È£ÅÚ', 101, 'guest3', '2022-04-01', '2022-04-22', '2022-04-23', '½Å¿ëÄ«µå', 3);",
-			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(25000, '2022-04-04', '¼ÓÃÊ ÄÁÇÇ³×½º ºñÄ¡ È£ÅÚ', 101, 'guest4', '2022-04-01', '2022-04-22', '2022-04-23', '½Å¿ëÄ«µå', 3);",
-			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(25000, '2022-04-04', '½Å¶ó½ºÅ×ÀÌ »ï¼º', 101, 'guest4', '2022-04-01', '2022-04-22', '2022-04-23', '½Å¿ëÄ«µå', 3);",
-			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(25000, '2022-04-04', '½Å¶ó½ºÅ×ÀÌ »ï¼º', 101, 'guest5', '2022-04-01', '2022-04-22', '2022-04-23', '½Å¿ëÄ«µå', 3);",
-			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(25000, '2022-04-04', 'È£ÅÚ ¾Æ¸£¶¼', 101, 'guest5', '2022-04-01', '2022-04-22', '2022-04-23', '½Å¿ëÄ«µå', 3);",
-			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(25000, '2022-04-04', 'È£ÅÚ ¾Æ¸£¶¼', 101, 'guest1', '2022-04-01', '2022-04-22', '2022-04-23', '½Å¿ëÄ«µå', 3);",
+			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(20000, '2022-03-04', 'ë¼ë°œìŠ¤ í˜¸í…” ë¶€ì‚°', 101, 'guest1', '2022-03-01', '2022-03-22', '2022-03-23', 'ì‹ ìš©ì¹´ë“œ', 3);",
+			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(20000, '2022-03-04', 'ë¼ë°œìŠ¤ í˜¸í…” ë¶€ì‚°', 101, 'guest2', '2022-03-01', '2022-03-22', '2022-03-23', 'ì‹ ìš©ì¹´ë“œ', 3);",
+			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(25000, '2022-04-04', 'ì†ì´ˆ ì»¨í”¼ë„¤ìŠ¤ ë¹„ì¹˜ í˜¸í…”', 101, 'guest2', '2022-04-01', '2022-04-22', '2022-04-23', 'ì‹ ìš©ì¹´ë“œ', 3);",
+			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(25000, '2022-04-04', 'ì†ì´ˆ ì»¨í”¼ë„¤ìŠ¤ ë¹„ì¹˜ í˜¸í…”', 101, 'guest3', '2022-04-01', '2022-04-22', '2022-04-23', 'ì‹ ìš©ì¹´ë“œ', 3);",
+			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(25000, '2022-04-04', 'ì‹ ë¼ìŠ¤í…Œì´ ì‚¼ì„±', 101, 'guest3', '2022-04-01', '2022-04-22', '2022-04-23', 'ì‹ ìš©ì¹´ë“œ', 3);",
+			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(25000, '2022-04-04', 'ì‹ ë¼ìŠ¤í…Œì´ ì‚¼ì„±', 101, 'guest4', '2022-04-01', '2022-04-22', '2022-04-23', 'ì‹ ìš©ì¹´ë“œ', 3);",
+			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(25000, '2022-04-04', 'í˜¸í…” ì•„ë¥´ë–¼', 101, 'guest4', '2022-04-01', '2022-04-22', '2022-04-23', 'ì‹ ìš©ì¹´ë“œ', 3);",
+			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(25000, '2022-04-04', 'í˜¸í…” ì•„ë¥´ë–¼', 101, 'guest5', '2022-04-01', '2022-04-22', '2022-04-23', 'ì‹ ìš©ì¹´ë“œ', 3);",
+			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(25000, '2022-04-04', 'ííŠ¼ ê°€ë“ ì¸ ì„œìš¸ ê°•ë‚¨', 101, 'guest5', '2022-04-01', '2022-04-22', '2022-04-23', 'ì‹ ìš©ì¹´ë“œ', 3);",
+			"insert into reservation_cancellation(cancellation_charge, cancellation_date, hotel_name, room_num, c_id, reserve_date, start_date_of_use, end_of_use_date , payment_type, number_of_people) values(25000, '2022-04-04', 'ííŠ¼ ê°€ë“ ì¸ ì„œìš¸ ê°•ë‚¨', 101, 'guest1', '2022-04-01', '2022-04-22', '2022-04-23', 'ì‹ ìš©ì¹´ë“œ', 3);",
 	};
 	public static void main(String[] args){
 		createInitialHotelDatabase();
