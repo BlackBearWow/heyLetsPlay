@@ -5,8 +5,10 @@ import java.util.*;
 
 public class DB
 {
-	static  Connection con = null;
-	static String URL = "jdbc:mysql://localhost:3306/" ;
+	static Connection con = null;
+	static String URL = "jdbc:mysql://localhost:3306/";
+	static String user = "root";
+	static String password = "onlyroot";
 	
 	//매개변수가 전달되지 않은 loadConnect는 hotelreserve를 기본으로 연결한다. java에는 기본매개변수가 없기 때문에 따로 메소드를 만들어야함.
 	public static boolean loadConnect() {
@@ -22,7 +24,7 @@ public class DB
 			e.printStackTrace();                      
 		}
 		try {
-			   con  = DriverManager.getConnection(URL + database, "root", "onlyroot");
+			   con  = DriverManager.getConnection(URL + database, user, password);
 			   return true;
 		} 
 		catch( SQLException e ) { System.err.println("conn 에러:" + e.getMessage() ); }
