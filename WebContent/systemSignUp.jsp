@@ -27,7 +27,7 @@
 		return;
 	}
 	else
-		out.print("<script>alert('회원가입 성공'); location.href='index.html';</script>");
+		out.print("<script>alert('회원가입 성공'); location.href='index.jsp';</script>");
 	%>
 </body>
 </html>
